@@ -13,7 +13,7 @@ APACHE_ACCESS_LOG_PATTERN = '^(\S+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(\S+)
 def parse_apache_log_line(logline):
     match = re.search(APACHE_ACCESS_LOG_PATTERN, logline)
     if match is None:
-        raise Error("Invalid logline: %s" % logline)
+        raise Error(f"Invalid logline: {logline}")
     return Row(
         ip_address    = match.group(1),
         client_identd = match.group(2),
